@@ -8,7 +8,7 @@ This creates the old-school looking weather channel that was common on Winnipeg 
 
 This was written in Python 3.x
 
-This uses 'NOAA' to get the weather data from the National Weather Serivce. It can be found here: ([https://github.com/michaeldavie/env_canada](https://github.com/paulokuong/noaa)). 
+This uses 'NOAA' to get the weather data from the National Weather Serivce. It can be found here:https://github.com/paulokuong/noaa. 
 It also uses the fonts VCR OSD Mono (https://www.dafont.com/vcr-osd-mono.font) and 7-Segment Normal (https://blogfonts.com/7-segment-normal.font).
 
 It was tested on a Raspberry Pi 2B running Raspberry Pi OS (full w/desktop). 
