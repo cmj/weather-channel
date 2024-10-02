@@ -1,5 +1,7 @@
-# wpg-weatherchan
+# weather-channel
 This creates the old-school looking weather channel that was common on Winnipeg cable TV into the 1990s.
+
+ - KGW News ticker at the bottom of the screen
 
 ![Example1](/screenshot-1.png)
 ![Example2](/screenshot-2.png)
