@@ -17,7 +17,7 @@ import linecache
 import sys
 prog = "wpg-usa"
 ver = "3.0"
-Music = OFF #Enables or disables music player, ON to turn it on, and anyhing else to disable it
+Music = ON #Enables or disables music player, ON to turn it on, and anyhing else to disable it
 #probnot's Retro Winnipeg Weather Channel USA version by TechSavvvvy
 #Started on June 27, 2024, last updated August 6, 2024
 
@@ -64,10 +64,10 @@ Pg8_C6_Name = "NAGS HEAD" ; Pg8_C6_State = "NC" ; Pg8_C6_Zip = 27959
 Pg8_C7_Name = "NIAGRA FALLS" ; Pg8_C7_State = "NY" ; Pg8_C7_Zip = 14301
 
 root = Tk()
-root.attributes('-fullscreen',True)
+root.attributes('-fullscreen',False)
 root.geometry("720x480") # this must be 720x480 for a proper filled out screen on composite output. 640x480 will have black bar on RH side. use 720x576 for PAL.
 root.config(cursor="none", bg="green")
-root.wm_title("wpg-weatherchan")
+root.wm_title("The Weather Channel")
 updateTimer = 1800000 #30 minutes
 current_time = datetime.datetime.now()
 
@@ -160,18 +160,18 @@ def shortFDetermine(FDetIn): #Used to determine forecast, called by pages 1-3, 6
 
 def tempDetermine(dirty_TempIn):
         tempDirty = (dirty_TempIn[140:150]) #Isloates a section of the long string of data from NOAA, temp value will be surrounded by garbage data
-        tempClean = re.sub("\D", "", tempDirty) #Pulls only numbers from data, so in theory only the temp value will be left
+        tempClean = re.sub("\\D", "", tempDirty) #Pulls only numbers from data, so in theory only the temp value will be left
         return tempClean
 
 def precipDetermine(dirty_precipIn): #Works similar to tempDetermine
         precipDirty = (dirty_precipIn[255:275])
-        precipClean = re.sub("\D", "", precipDirty)
+        precipClean = re.sub("\\D", "", precipDirty)
         return precipClean
 
 #Set current humidity. Works similar to tempDetermine function.
 def humidDetermine(humidIn):
     humidDirty = (humidIn[355:405])
-    humidNums = re.sub("\D", "", humidDirty)
+    humidNums = re.sub("\\D", "", humidDirty)
     humidOut = (humidNums[0:2])
     return humidOut
 
@@ -197,7 +197,7 @@ def WinDirDetermine(windDirtyIn):
 
 def WindSpdDetermine(WindSpdIn):
     WindSpdDirty = (WindSpdIn[405:430]) #originally 410:430 #Works similar to tempDetermine function
-    WindStr = re.sub("\D", "", WindSpdDirty)
+    WindStr = re.sub("\\D", "", WindSpdDirty)
     Windint = WindStr
     if Windint.isdigit(): #Checks if Windit is a number, if there's no wind there will be no value
          return str(Windint)
@@ -206,7 +206,7 @@ def WindSpdDetermine(WindSpdIn):
 
 def dewDetermine(dewIn):
     dewDirty = (dewIn[310:345]) #Pull section from current weather info
-    dewRaw = re.sub("\D", "", dewDirty) #Pull numbers from section
+    dewRaw = re.sub("\\D", "", dewDirty) #Pull numbers from section
     dewC = (dewRaw[0:2]) + "." + (dewRaw[3:5]) #Pull only 4 digits in form xx.xx. This is in celcius
     dewC_S = float(dewC) #Convert string (dewC) to float data type 
     dewF = (dewC_S * 1.8) + 32 #Convert C to F
@@ -216,13 +216,13 @@ def dewDetermine(dewIn):
 
 def pressureDetermine(pressureIn):
     pressureDirty = (pressureIn[950:1050]) #Works similar to setting current temp
-    pressureNum = re.sub("\D", "", pressureDirty)
+    pressureNum = re.sub("\\D", "", pressureDirty)
     PressureOut = (pressureNum[0:3] + "." + pressureNum[4:5]) #Puts pressure in xxx.x format
     return PressureOut
 
 def visDetermine(visIn):
     visDirty = (visIn[1100:1200]) #Works similar to setting current temp
-    visNum = re.sub("\D", "", visDirty)
+    visNum = re.sub("\\D", "", visDirty)
     VisibilityOut = (visNum[0:2]) #Pulls only first 2 digits
     return VisibilityOut
 
@@ -877,7 +877,7 @@ def bottom_marquee(grouptotal):
     for r in range(width): #create an empty string of 35 characters
         pad = pad + " " 
 
-    url = "https://www.wkyc.com/feeds/syndication/rss/news/local"
+    url = "https://www.kgw.com/feeds/syndication/rss/news"
     wpg = feedparser.parse(url)
     debug_msg("BOTTOM_MARQUEE-RSS feed refreshed",1)
 
@@ -978,7 +978,7 @@ clock()
 
 # Title - Top LEFT
 debug_msg("ROOT-placing Title Text",1)
-Title = Label(root, text="ENVIORNMENT USA", font=("VCR OSD Mono", 22, "bold"), fg="white", bg="green")
+Title = Label(root, text=" ⛅ THE WEATHER CHANNEL", font=("VCR OSD Mono", 22, "bold"), fg="white", bg="green")
 Title.place(x=0, y=40)
 
 # total number of groups broken up to update sections of weather data, to keep update time short
@@ -992,7 +992,7 @@ weather_page(PageColour, PageNum)
 if Music == ON: #Added by TechSavvvvy to allow music player to be easily enabled/disabled
 # Generate background music playlist
  debug_msg("ROOT-launching playlist generator",1)
- musicpath = "/home/techsavvvvy/Music" # must show full path
+ musicpath = "/home/cmj/mp3/vaporwave/florida rains/Florida Rains/Good Evening Forecast/" # must show full path
  playlist = playlist_generator(musicpath) # generate playlist array
  random.shuffle(playlist) # shuffle playlist
 

@@ -1,3 +1,4 @@
 NOAA 
+noaa_sdk
 pygame
 feedparser
