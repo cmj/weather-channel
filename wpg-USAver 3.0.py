@@ -31,8 +31,8 @@ Music = ON #Enables or disables music player, ON to turn it on, and anyhing else
     #Changed screen routine debug messages to 3 priorty
     #Converted previous print messages used for troubleshooting updater to debug messages with a 2 priority
     #Added diagnostic priority to probnot's debug message function
-ZIP = 97035 #Enter USA ZIP code here, added by -TS, TX-75007 Kill Devil Hills 27948
-Pg1_City = "PORTLAND"
+ZIP = 98122 #Enter USA ZIP code here, added by -TS, TX-75007 Kill Devil Hills 27948
+Pg1_City = "SEATTLE"
 
 
 Pg6_C1_Name = "DETRIOT" #Set city name for the first city on page 6, used only for looks
@@ -50,7 +50,7 @@ Pg6_C7_Name = "TOLEDO" ; Pg6_C7_State = "OH" ; Pg6_C7_Zip = 43537
 Pg7_C1_Name = "AUSTIN" ; Pg7_C1_State = "TX" ;Pg7_C1_Zip = 77301
 Pg7_C2_Name = "COLUMBUS" ; Pg7_C2_State = "OH" ;Pg7_C2_Zip = 43004
 Pg7_C3_Name = "MONTGOMERY" ; Pg7_C3_State = "AL" ; Pg7_C3_Zip = 36043
-Pg7_C4_Name = "RALEIGH" ; Pg7_C4_State = "NC" ; Pg7_C4_Zip = 27513
+Pg7_C4_Name = "PORTLAND" ; Pg7_C4_State = "OR" ; Pg7_C4_Zip = 97213
 Pg7_C5_Name = "SACRAMENTO" ; Pg7_C5_State = "CA" ; Pg7_C5_Zip = 95758
 Pg7_C6_Name = "TALLAHASSEE" ; Pg7_C6_State = "FL" ; Pg7_C6_Zip = 32301
 Pg7_C7_Name = "WASHINGTON D.C." ; Pg7_C7_State = " " ; Pg7_C7_Zip = 20500
